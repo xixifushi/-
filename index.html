@@ -82,7 +82,7 @@
             </div>
             
             <!-- 抽奖按钮 -->
-            <button id="draw-btn" class="relative bg-gradient-to-r from-primary to-secondary text-white font-bold text-2xl py-6 px-16 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-primary/30">
+            <button id="draw-btn" class="group relative bg-gradient-to-r from-primary to-secondary text-white font-bold text-2xl py-6 px-16 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-primary/30">
                 <span class="relative z-10">点击抽奖</span>
                 <div class="absolute inset-0 bg-white/20 rounded-full animate-ping opacity-0 group-hover:opacity-100"></div>
             </button>
@@ -146,14 +146,14 @@
             </div>
             <h2 class="text-4xl font-bold text-primary text-shadow mb-2">恭喜你！</h2>
             <h3 class="text-2xl font-semibold text-gray-700 mb-8">你抽到了：<span class="text-secondary">衣服</span></h3>
-            <p class="text-gray-600 mb-8">请选择你喜欢的款式</p>
+            <p class="text-gray-600 mb-8">为你随机抽取了一款衣服</p>
         </div>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl w-full">
             <!-- 衣服款式1 -->
             <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer" onclick="showFinalResult('衣服款式1')">
-                    <div class="h-60 bg-gray-100 flex items-center justify-center overflow-hidden">
-        <img src="kuanshi1.png" alt="衣服款式一" class="w-full h-full object-cover">
+                <div class="h-60 bg-gray-100 flex items-center justify-center overflow-hidden">
+                    <img src="kuanshi1.png" alt="衣服款式一" class="w-full h-full object-cover">
                 </div>
                 <div class="p-4 text-center">
                     <h4 class="font-bold text-gray-800">款式一</h4>
@@ -163,7 +163,7 @@
             <!-- 衣服款式2 -->
             <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer" onclick="showFinalResult('衣服款式2')">
                 <div class="h-60 bg-gray-100 flex items-center justify-center overflow-hidden">
-        <img src="kuanshi2.png" alt="衣服款式二" class="w-full h-full object-cover">
+                    <img src="kuanshi2.png" alt="衣服款式二" class="w-full h-full object-cover">
                 </div>
                 <div class="p-4 text-center">
                     <h4 class="font-bold text-gray-800">款式二</h4>
@@ -172,8 +172,8 @@
             
             <!-- 衣服款式3 -->
             <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer" onclick="showFinalResult('衣服款式3')">
-                 <div class="h-60 bg-gray-100 flex items-center justify-center overflow-hidden">
-        <img src="kuanshi3.png" alt="衣服款式三" class="w-full h-full object-cover">
+                <div class="h-60 bg-gray-100 flex items-center justify-center overflow-hidden">
+                    <img src="kuanshi3.png" alt="衣服款式三" class="w-full h-full object-cover">
                 </div>
                 <div class="p-4 text-center">
                     <h4 class="font-bold text-gray-800">款式三</h4>
@@ -183,7 +183,7 @@
             <!-- 衣服款式4 -->
             <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer" onclick="showFinalResult('衣服款式4')">
                 <div class="h-60 bg-gray-100 flex items-center justify-center overflow-hidden">
-        <img src="kuanshi4.png" alt="衣服款式四" class="w-full h-full object-cover">
+                    <img src="kuanshi4.png" alt="衣服款式四" class="w-full h-full object-cover">
                 </div>
                 <div class="p-4 text-center">
                     <h4 class="font-bold text-gray-800">款式四</h4>
@@ -192,8 +192,8 @@
             
             <!-- 衣服款式5 -->
             <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer" onclick="showFinalResult('衣服款式5')">
-               <div class="h-60 bg-gray-100 flex items-center justify-center overflow-hidden">
-        <img src="kuanshi5.png" alt="衣服款式五" class="w-full h-full object-cover">
+                <div class="h-60 bg-gray-100 flex items-center justify-center overflow-hidden">
+                    <img src="kuanshi5.png" alt="衣服款式五" class="w-full h-full object-cover">
                 </div>
                 <div class="p-4 text-center">
                     <h4 class="font-bold text-gray-800">款式五</h4>
@@ -301,7 +301,7 @@
             });
         }
         
-        // 抽奖功能
+        // 抽奖功能（衣服款式随机抽取）
         drawBtn.addEventListener('click', function() {
             hideAllPages();
             drawingPage.classList.remove('hidden');
@@ -320,8 +320,11 @@
                         jewelryPage.classList.remove('hidden');
                         break;
                     case 'clothes':
-                        clothesPage.classList.remove('hidden');
-                        break;
+                        // 抽到衣服后，直接随机选一个款式，跳转到最终结果页
+                        const clothesStyles = ['衣服款式1', '衣服款式2', '衣服款式3', '衣服款式4', '衣服款式5'];
+                        const randomClothes = clothesStyles[Math.floor(Math.random() * clothesStyles.length)];
+                        showFinalResult(randomClothes);
+                        return; // 直接结束，不显示衣服选择页
                     case 'mask':
                         maskPage.classList.remove('hidden');
                         break;
