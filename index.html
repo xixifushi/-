@@ -89,7 +89,7 @@
         </div>
     </div>
     
-    <!-- 抽奖动画页面 -->
+    <!-- 主抽奖动画页面 -->
     <div id="drawing-page" class="hidden flex flex-col items-center justify-center min-h-screen px-4 py-12">
         <div class="text-center">
             <div class="text-6xl mb-8 animate-spin">
@@ -97,6 +97,58 @@
             </div>
             <h2 class="text-3xl font-bold text-primary mb-4">正在抽取中...</h2>
             <p class="text-gray-600">好运即将降临</p>
+        </div>
+    </div>
+
+    <!-- 衣服二次抽奖页面 -->
+    <div id="clothes-draw-page" class="hidden flex flex-col items-center justify-center min-h-screen px-4 py-12">
+        <div class="text-center mb-16">
+            <div class="text-6xl text-secondary mb-4 animate-bounce-slow">
+                <i class="fa fa-shopping-bag"></i>
+            </div>
+            <h1 class="text-4xl font-bold text-primary text-shadow-lg mb-6">
+                恭喜抽中衣服！
+            </h1>
+            <p class="text-gray-600 text-xl max-w-md mx-auto mb-8">
+                点击下方按钮，抽取你的专属衣服款式
+            </p>
+        </div>
+        
+        <div class="relative mb-20">
+            <!-- 装饰性元素 -->
+            <div class="absolute -top-10 -left-10 text-accent text-4xl animate-spin-slow">
+                <i class="fa fa-star-o"></i>
+            </div>
+            <div class="absolute -top-5 -right-8 text-secondary text-3xl animate-pulse-slow">
+                <i class="fa fa-gift"></i>
+            </div>
+            <div class="absolute -bottom-8 -left-5 text-primary text-3xl animate-pulse-slow">
+                <i class="fa fa-diamond"></i>
+            </div>
+            <div class="absolute -bottom-10 -right-10 text-accent text-4xl animate-spin-slow">
+                <i class="fa fa-star"></i>
+            </div>
+            
+            <!-- 衣服二次抽奖按钮 -->
+            <button id="clothes-draw-btn" class="group relative bg-gradient-to-r from-secondary to-pink-500 text-white font-bold text-2xl py-6 px-16 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-secondary/30">
+                <span class="relative z-10">抽取款式</span>
+                <div class="absolute inset-0 bg-white/20 rounded-full animate-ping opacity-0 group-hover:opacity-100"></div>
+            </button>
+        </div>
+
+        <button onclick="goBack()" class="mt-8 text-gray-500 hover:text-primary transition-colors">
+            <i class="fa fa-arrow-left mr-2"></i>返回重新抽奖
+        </button>
+    </div>
+
+    <!-- 衣服二次抽奖动画页面 -->
+    <div id="clothes-drawing-page" class="hidden flex flex-col items-center justify-center min-h-screen px-4 py-12">
+        <div class="text-center">
+            <div class="text-6xl mb-8 animate-spin">
+                <i class="fa fa-circle-o-notch text-secondary"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-secondary mb-4">正在抽取款式...</h2>
+            <p class="text-gray-600">解锁你的专属穿搭</p>
         </div>
     </div>
     
@@ -129,74 +181,6 @@
                 <div class="p-6 text-center">
                     <h4 class="text-xl font-bold text-gray-800">耳钉</h4>
                     <p class="text-gray-500 mt-2">小巧精致，彰显你的品味</p>
-                </div>
-            </div>
-        </div>
-        
-        <button onclick="goBack()" class="mt-12 text-gray-500 hover:text-primary transition-colors">
-            <i class="fa fa-arrow-left mr-2"></i>返回重新抽奖
-        </button>
-    </div>
-    
-    <!-- 结果页面 - 衣服 -->
-    <div id="clothes-page" class="hidden flex flex-col items-center justify-center min-h-screen px-4 py-12">
-        <div class="text-center mb-12">
-            <div class="text-6xl text-secondary mb-4">
-                <i class="fa fa-shopping-bag"></i>
-            </div>
-            <h2 class="text-4xl font-bold text-primary text-shadow mb-2">恭喜你！</h2>
-            <h3 class="text-2xl font-semibold text-gray-700 mb-8">你抽到了：<span class="text-secondary">衣服</span></h3>
-            <p class="text-gray-600 mb-8">为你随机抽取了一款衣服</p>
-        </div>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl w-full">
-            <!-- 衣服款式1 -->
-            <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer" onclick="showFinalResult('衣服款式1')">
-                <div class="h-60 bg-gray-100 flex items-center justify-center overflow-hidden">
-                    <img src="kuanshi1.png" alt="衣服款式一" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4 text-center">
-                    <h4 class="font-bold text-gray-800">款式一</h4>
-                </div>
-            </div>
-            
-            <!-- 衣服款式2 -->
-            <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer" onclick="showFinalResult('衣服款式2')">
-                <div class="h-60 bg-gray-100 flex items-center justify-center overflow-hidden">
-                    <img src="kuanshi2.png" alt="衣服款式二" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4 text-center">
-                    <h4 class="font-bold text-gray-800">款式二</h4>
-                </div>
-            </div>
-            
-            <!-- 衣服款式3 -->
-            <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer" onclick="showFinalResult('衣服款式3')">
-                <div class="h-60 bg-gray-100 flex items-center justify-center overflow-hidden">
-                    <img src="kuanshi3.png" alt="衣服款式三" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4 text-center">
-                    <h4 class="font-bold text-gray-800">款式三</h4>
-                </div>
-            </div>
-            
-            <!-- 衣服款式4 -->
-            <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer" onclick="showFinalResult('衣服款式4')">
-                <div class="h-60 bg-gray-100 flex items-center justify-center overflow-hidden">
-                    <img src="kuanshi4.png" alt="衣服款式四" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4 text-center">
-                    <h4 class="font-bold text-gray-800">款式四</h4>
-                </div>
-            </div>
-            
-            <!-- 衣服款式5 -->
-            <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer" onclick="showFinalResult('衣服款式5')">
-                <div class="h-60 bg-gray-100 flex items-center justify-center overflow-hidden">
-                    <img src="kuanshi5.png" alt="衣服款式五" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4 text-center">
-                    <h4 class="font-bold text-gray-800">款式五</h4>
                 </div>
             </div>
         </div>
@@ -259,19 +243,25 @@
         // 获取页面元素
         const mainPage = document.getElementById('main-page');
         const drawingPage = document.getElementById('drawing-page');
+        const clothesDrawPage = document.getElementById('clothes-draw-page');
+        const clothesDrawingPage = document.getElementById('clothes-drawing-page');
         const jewelryPage = document.getElementById('jewelry-page');
-        const clothesPage = document.getElementById('clothes-page');
         const maskPage = document.getElementById('mask-page');
         const finalPage = document.getElementById('final-page');
         const drawBtn = document.getElementById('draw-btn');
+        const clothesDrawBtn = document.getElementById('clothes-draw-btn');
         const finalPrize = document.getElementById('final-prize');
+        
+        // 衣服款式池
+        const clothesStyles = ['衣服款式一', '衣服款式二', '衣服款式三', '衣服款式四', '衣服款式五'];
         
         // 隐藏所有页面
         function hideAllPages() {
             mainPage.classList.add('hidden');
             drawingPage.classList.add('hidden');
+            clothesDrawPage.classList.add('hidden');
+            clothesDrawingPage.classList.add('hidden');
             jewelryPage.classList.add('hidden');
-            clothesPage.classList.add('hidden');
             maskPage.classList.add('hidden');
             finalPage.classList.add('hidden');
         }
@@ -288,7 +278,7 @@
             finalPrize.textContent = prize;
             finalPage.classList.remove('hidden');
             
-            // 添加进入动画
+            // 进入动画
             const elements = finalPage.querySelectorAll('div, h2, h3, button');
             elements.forEach((el, index) => {
                 el.style.opacity = '0';
@@ -301,7 +291,7 @@
             });
         }
         
-        // 抽奖功能（衣服款式随机抽取）
+        // 主抽奖功能
         drawBtn.addEventListener('click', function() {
             hideAllPages();
             drawingPage.classList.remove('hidden');
@@ -314,38 +304,70 @@
                 
                 hideAllPages();
                 
-                // 根据随机结果显示对应的页面
+                // 根据随机结果跳转对应页面
                 switch(randomPrize) {
                     case 'jewelry':
                         jewelryPage.classList.remove('hidden');
+                        // 进入动画
+                        const jewelryElements = jewelryPage.querySelectorAll('div, h2, h3, button');
+                        jewelryElements.forEach((el, index) => {
+                            el.style.opacity = '0';
+                            el.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                el.style.transition = 'all 0.5s ease';
+                                el.style.opacity = '1';
+                                el.style.transform = 'translateY(0)';
+                            }, index * 100);
+                        });
                         break;
                     case 'clothes':
-                        // 抽到衣服后，直接随机选一个款式，跳转到最终结果页
-                        const clothesStyles = ['衣服款式1', '衣服款式2', '衣服款式3', '衣服款式4', '衣服款式5'];
-                        const randomClothes = clothesStyles[Math.floor(Math.random() * clothesStyles.length)];
-                        showFinalResult(randomClothes);
-                        return; // 直接结束，不显示衣服选择页
+                        // 抽中衣服，跳转到二次抽奖页面
+                        clothesDrawPage.classList.remove('hidden');
+                        // 进入动画
+                        const clothesElements = clothesDrawPage.querySelectorAll('div, h1, p, button');
+                        clothesElements.forEach((el, index) => {
+                            el.style.opacity = '0';
+                            el.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                el.style.transition = 'all 0.5s ease';
+                                el.style.opacity = '1';
+                                el.style.transform = 'translateY(0)';
+                            }, index * 100);
+                        });
+                        break;
                     case 'mask':
                         maskPage.classList.remove('hidden');
+                        // 进入动画
+                        const maskElements = maskPage.querySelectorAll('div, h2, h3, button');
+                        maskElements.forEach((el, index) => {
+                            el.style.opacity = '0';
+                            el.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                el.style.transition = 'all 0.5s ease';
+                                el.style.opacity = '1';
+                                el.style.transform = 'translateY(0)';
+                            }, index * 100);
+                        });
                         break;
                 }
-                
-                // 添加进入动画
-                const currentPage = document.getElementById(`${randomPrize}-page`);
-                const elements = currentPage.querySelectorAll('div, h2, h3, button');
-                elements.forEach((el, index) => {
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        el.style.transition = 'all 0.5s ease';
-                        el.style.opacity = '1';
-                        el.style.transform = 'translateY(0)';
-                    }, index * 100);
-                });
-            }, 1500); // 抽奖动画持续1.5秒
+            }, 1500); // 主抽奖动画1.5秒
+        });
+
+        // 衣服二次抽奖功能
+        clothesDrawBtn.addEventListener('click', function() {
+            hideAllPages();
+            clothesDrawingPage.classList.remove('hidden');
+            
+            // 模拟二次抽奖过程
+            setTimeout(() => {
+                // 从5个款式里随机抽取一个
+                const randomStyle = clothesStyles[Math.floor(Math.random() * clothesStyles.length)];
+                // 跳转到最终结果页
+                showFinalResult(randomStyle);
+            }, 1500); // 二次抽奖动画1.5秒
         });
         
-        // 页面加载完成后添加主页面动画
+        // 页面加载完成后主页面动画
         window.addEventListener('load', function() {
             const elements = mainPage.querySelectorAll('div, h1, p, button');
             elements.forEach((el, index) => {
